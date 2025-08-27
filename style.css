@@ -1,0 +1,739 @@
+
+:root {
+  /* Color palette */
+  --primary-bg: #0f172a;
+  --secondary-bg: #1e293b;
+  --surface-bg: #334155;
+  --accent-bg: #475569;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
+
+  /* Course colors */
+  --math101-color: #3B82F6;
+  --history207-color: #10B981;
+  --math203-color: #8B5CF6;
+  --physics150-color: #F59E0B;
+  --cs201-color: #EF4444;
+
+  /* Typography */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--primary-bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Header */
+.header {
+  background: var(--secondary-bg);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(135deg, var(--info-color), var(--success-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+}
+
+/* Navigation tabs */
+.nav-tabs {
+  background: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-4) 0;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  background: var(--accent-bg);
+  color: var(--text-primary);
+}
+
+.tab.active {
+  background: var(--info-color);
+  color: white;
+  border-color: var(--info-color);
+}
+
+.tab__icon {
+  font-size: var(--font-size-lg);
+}
+
+.tab__name {
+  font-weight: 500;
+}
+
+/* Main content */
+.main {
+  padding: var(--space-8) 0;
+}
+
+.course-interface {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-8);
+  min-height: 80vh;
+}
+
+/* Input panel */
+.input-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.panel-section {
+  background: var(--secondary-bg);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  border: 1px solid var(--border-color);
+}
+
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+/* Upload area */
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+  border-color: var(--info-color);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-4);
+}
+
+.upload-text {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.upload-button {
+  background: var(--info-color);
+  color: white;
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: background 0.2s ease;
+}
+
+.upload-button:hover {
+  background: #2563eb;
+}
+
+/* Progress bar */
+.upload-progress {
+  margin-top: var(--space-4);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--surface-bg);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--success-color);
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.progress-text {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* Uploaded files */
+.uploaded-files {
+  margin-top: var(--space-4);
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface-bg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+}
+
+.file-icon {
+  font-size: var(--font-size-lg);
+}
+
+.file-info {
+  flex: 1;
+}
+
+.file-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.file-size {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.file-status {
+  font-size: var(--font-size-sm);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--success-color);
+  color: white;
+}
+
+/* Problem templates */
+.problem-templates {
+  margin-bottom: var(--space-4);
+}
+
+.template-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.template-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.template-button {
+  background: var(--surface-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  transition: all 0.2s ease;
+}
+
+.template-button:hover {
+  background: var(--accent-bg);
+  color: var(--text-primary);
+}
+
+/* Problem textarea */
+.problem-textarea {
+  width: 100%;
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  color: var(--text-primary);
+  resize: vertical;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+}
+
+.problem-textarea:focus {
+  outline: none;
+  border-color: var(--info-color);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.problem-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Input actions */
+.input-actions {
+  margin-top: var(--space-4);
+}
+
+.generate-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: linear-gradient(135deg, var(--info-color), var(--success-color));
+  color: white;
+  border: none;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.generate-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.generate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Course info */
+.course-info {
+  color: var(--text-secondary);
+}
+
+.course-description {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  background: var(--surface-bg);
+  border-radius: var(--radius-md);
+}
+
+/* Worksheet panel */
+.worksheet-panel {
+  background: white;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+}
+
+.worksheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6);
+  background: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.worksheet-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.worksheet-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: var(--surface-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background: var(--accent-bg);
+  color: var(--text-primary);
+}
+
+/* Worksheet content */
+.worksheet-content {
+  padding: var(--space-8);
+  background: white;
+  color: #1a1a1a;
+  min-height: 600px;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+}
+
+/* Welcome message */
+.welcome-message {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: var(--space-12);
+}
+
+.welcome-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+}
+
+.welcome-message h4 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+  color: #374151;
+}
+
+.welcome-message p {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-6);
+  color: #6b7280;
+}
+
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.feature {
+  padding: var(--space-3);
+  background: #f3f4f6;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: #374151;
+}
+
+/* Worksheet styles */
+.worksheet {
+  font-family: 'Georgia', serif;
+  line-height: 1.8;
+  color: #1a1a1a;
+}
+
+.worksheet-course-header {
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.worksheet-course-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.worksheet-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  color: #6b7280;
+  margin-bottom: var(--space-2);
+}
+
+.worksheet-section {
+  margin-bottom: var(--space-8);
+}
+
+.worksheet-section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.worksheet-subsection {
+  margin-bottom: var(--space-4);
+}
+
+.worksheet-subsection-title {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: var(--space-2);
+}
+
+.worksheet-content-block {
+  background: #f9fafb;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--info-color);
+  margin-bottom: var(--space-3);
+}
+
+.solution-step {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  border-left: 3px solid #e5e7eb;
+  padding-left: var(--space-4);
+}
+
+.step-number {
+  font-weight: 600;
+  color: var(--info-color);
+}
+
+.step-content {
+  margin-top: var(--space-1);
+}
+
+.math-expression {
+  font-family: 'Courier New', monospace;
+  background: #f3f4f6;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  margin: var(--space-2) 0;
+  font-weight: 500;
+}
+
+.final-answer {
+  background: #dcfce7;
+  border: 2px solid var(--success-color);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+}
+
+.practice-problem {
+  background: #fef3c7;
+  border-left: 4px solid var(--warning-color);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.reference-note {
+  font-size: var(--font-size-sm);
+  color: #6b7280;
+  font-style: italic;
+  margin-top: var(--space-2);
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid var(--info-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--space-4);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: var(--space-6);
+}
+
+.loading-steps {
+  text-align: center;
+}
+
+.step {
+  margin-bottom: var(--space-2);
+  color: #6b7280;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.step.active {
+  opacity: 1;
+  color: var(--info-color);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .course-interface {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .input-panel {
+    order: 2;
+  }
+
+  .worksheet-panel {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    justify-content: flex-start;
+  }
+
+  .tab {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .worksheet-header {
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: stretch;
+  }
+
+  .worksheet-actions {
+    justify-content: center;
+  }
+
+  .worksheet-content {
+    padding: var(--space-4);
+  }
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .nav-tabs,
+  .input-panel,
+  .worksheet-header {
+    display: none !important;
+  }
+
+  .main {
+    padding: 0;
+  }
+
+  .course-interface {
+    display: block;
+  }
+
+  .worksheet-panel {
+    border: none;
+    box-shadow: none;
+  }
+
+  .worksheet-content {
+    padding: 0;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  .worksheet-section {
+    page-break-inside: avoid;
+    margin-bottom: 20pt;
+  }
+
+  .worksheet-section-title {
+    page-break-after: avoid;
+  }
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: var(--space-4);
+}
+
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.p-4 {
+  padding: var(--space-4);
+}
