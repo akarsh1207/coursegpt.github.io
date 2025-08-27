@@ -15,11 +15,11 @@
   --info-color: #3b82f6;
 
   /* Course colors */
-  --math101-color: #3B82F6;
-  --history207-color: #10B981;
-  --math203-color: #8B5CF6;
-  --physics150-color: #F59E0B;
-  --cs201-color: #EF4444;
+  --CSCI128A-color: #3B82F6;
+  --EBGN321D-color: #10B981;
+  --MNGN438A-color: #8B5CF6;
+  --MNGN322A-color: #F59E0B;
+  --MNGN322LA-color: #EF4444;
 
   /* Typography */
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
